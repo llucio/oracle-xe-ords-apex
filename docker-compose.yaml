@@ -1,0 +1,33 @@
+version: '3'
+volumes:
+  db:
+services: 
+  oracle-db:
+    image: container-registry.oracle.com/database/express:21.3.0-xe
+    ports:
+      - 1521:1521
+      - 5500:5500
+    environment:
+      ORACLE_PWD: oracle
+    volumes:
+      - db:/opt/oracle/oradata
+    healthcheck:
+        test: [ "CMD", "bash", "-c", "echo 'select 1 from dual;' | sqlplus -s pdbadmin/oracle@XEPDB1"]
+        interval: 10s
+        timeout: 10s
+        retries: 60
+        start_period: 60s
+  oracle-ords:
+    image: container-registry.oracle.com/database/ords:21.4.1
+    ports:
+      - 8181:8181
+    volumes:
+      - ./ords_volume/:/opt/oracle/variables:ro
+    depends_on:
+      oracle-db:
+        condition: service_healthy
+
+    # APEX default credentials:
+    # - Workspace: internal
+    # - User:      ADMIN
+    # - Password:  Welcome_1
