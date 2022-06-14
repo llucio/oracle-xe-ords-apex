@@ -2,8 +2,8 @@
 Docker compose example for running latest Oracle XE Database - Oracle ORDS and Oracle APEX locally
 using official and latest oracle images https://container-registry.oracle.com/ 
 
-Just run docker compose up and wait :)
- First time it will run oracle xe startup and wait for it to be available then ORDS will install on the default schema it will take a little time for it to be ready.
+Just run docker compose up and wait. :)
+First time it will run oracle xe startup and wait for it to be available then ORDS will install on the default schema it will take a little time for it to be ready.
 
 Ports used:
 
