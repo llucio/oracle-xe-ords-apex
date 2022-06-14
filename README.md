@@ -8,7 +8,7 @@ Just run docker compose up and wait :)
 Ports used:
 
 Oracle db:      1521    sys/oracle@localhost:1521/XEPDB1
-Oracle EM:      5500    https://localhost:5500/em/
+Oracle EM:      5500    https://localhost:5500/em/       last / is important
 Oracle APEX:    8181    http://localhost:8181/ords
 
 Oracle SYS SYSTEM PDBADMIN password:
